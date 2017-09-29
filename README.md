@@ -8,6 +8,15 @@ This class helps developers to easily work with [smspva](http://smspva.com/) sit
  - get_userinfo( User's balance request and your rating)
  - get_count_new (Request for the amount of free activations for a certain service)
  - denial ( Cancel the order to number you got )
+ 
+ 
+## Examples ##
+``` python
+pva=SmsPva();
+balance=pva.get_balance()  #result  {'response': '1', 'balance': '0.360'}
+userinfo=pva.get_userinfo() # result {'karma': '99.825', 'response': '1', 'balance': '0.360'}
+
+```
 
 ## License
 
