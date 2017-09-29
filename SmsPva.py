@@ -2,10 +2,10 @@ import requests
 
 class SmsPva:
     def __init__(self):
-        self.url = http://smspva.com/priemnik.php
-        self.api_key = 'your api_key'
-        self.method_type = 'get'
-        self.query_string = {}
+        self._url = http://smspva.com/priemnik.php
+        self._api_key = 'your api_key'
+        self._method_type = 'get'
+        self._query_string = {}
        
 
     def get_number(self, id=1, country='ru', service='opt29'):
@@ -13,8 +13,8 @@ class SmsPva:
         Request for receiving a phone number for a certain service
         :return:
         """
-        self.query_string = {'metod': 'get_number', 'country': country, 'service': service, 'id': id,
-                             'apikey': self.api_key}
+        self._query_string = {'metod': 'get_number', 'country': country, 'service': service, 'id': id,
+                             'apikey': self._api_key}
         result = self.__make_request()
         return result
 
@@ -23,8 +23,8 @@ class SmsPva:
         Receiving a SMS for a certain service
         :return:
         """
-        self.query_string = {'metod': 'get_sms', 'country': country, 'service': service, 'id': id,
-                             'apikey': self.api_key}
+        self._query_string = {'metod': 'get_sms', 'country': country, 'service': service, 'id': id,
+                             'apikey': self._api_key}
         result = self.__make_request()
         return result
 
@@ -34,7 +34,7 @@ class SmsPva:
         :param service:
         :return:
         """
-        self.query_string = {'metod': 'get_balance', 'service': service, 'apikey': self.api_key}
+        self._query_string = {'metod': 'get_balance', 'service': service, 'apikey': self._api_key}
         result = self.__make_request()
         return result
 
@@ -43,7 +43,7 @@ class SmsPva:
         User's balance request and karma (Your rating)
         :return:
         """
-        self.query_string = {'metod': 'get_userinfo', 'service': service, 'apikey': self.api_key}
+        self._query_string = {'metod': 'get_userinfo', 'service': service, 'apikey': self._api_key}
         result = self.__make_request()
         return result
 
@@ -54,7 +54,7 @@ class SmsPva:
         :param service:
         :return:
         """
-        self.query_string = {'metod': 'get_count_new', 'service': service , 'country':country, 'apikey': self.api_key}
+        self.query_string = {'metod': 'get_count_new', 'service': service , 'country':country, 'apikey': self._api_key}
         result = self.__make_request()
         return result
 
@@ -63,8 +63,8 @@ class SmsPva:
         Cancel the order to number you got
         :return:
         """
-        self.query_string = {'metod': 'denial', 'country': country, 'service': service, 'id': id,
-                             'apikey': self.api_key}
+        self._query_string = {'metod': 'denial', 'country': country, 'service': service, 'id': id,
+                             'apikey': self._api_key}
         result = self.__make_request()
         return result
 
@@ -75,9 +75,9 @@ class SmsPva:
         """
 
         try:
-            if self.method_type == 'get':
-                response = requests.get(self.url, self.query_string)
-            elif self.method_type == 'post':
+            if self._method_type == 'get':
+                response = requests.get(self._url, self._query_string)
+            elif self._method_type == 'post':
                 pass
 
             if response.status_code == 200:
